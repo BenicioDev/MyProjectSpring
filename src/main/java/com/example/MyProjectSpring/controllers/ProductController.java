@@ -15,11 +15,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ProductController {
 
-    @Autowired // ↓↓↓↓ Ponto de injeção da interface
+    @Autowired
     ProductRepository productRepository;
 
-    //Records → DTO (Data Tranfer Object) para receber dados ↓
-    @PostMapping("/products") //Modificadores de acesso ↓↓↓↓↓
+    @PostMapping("/products")
     public ResponseEntity<ProductModel> saveProduct(@RequestBody @Valid ProductRecordDTO productRecordDTO){
         var productModel = new ProductModel();
         BeanUtils.copyProperties(productRecordDTO, productModel);
